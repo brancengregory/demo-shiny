@@ -19,12 +19,6 @@ server <- function(config) {
       config = config
     )
 
-    onStop(
-      function() {
-        pool::poolClose(db)
-      }
-    )
-
     output$tbl <- DT::renderDT({
       DBI::dbGetQuery(
         conn = db,

@@ -10,6 +10,9 @@ run <- function(config, ...) {
   shiny::shinyApp(
     ui = ui,
     server = server(config),
+    onStart = shiny::onStop(function() {
+      pool::poolClose(db)
+    }),
     ...
   )
 }
