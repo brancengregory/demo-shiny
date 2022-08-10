@@ -10,7 +10,6 @@
 #'
 server <- function(config) {
   function(input, output, session) {
-
     config <- config::get(
       value = "database",
       file = config
@@ -18,6 +17,12 @@ server <- function(config) {
 
     db <- new_db_pool(
       config = config
+    )
+
+    onStop(
+      function() {
+        pool::poolClose(db)
+      }
     )
 
     output$tbl <- DT::renderDT({

@@ -10,5 +10,5 @@ ui()
 Nothing
 }
 \description{
-The main UI funciton for the application
+The main UI function for the application
 }
